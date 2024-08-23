@@ -201,8 +201,8 @@ function getImagesFromMultiSelect($files) {
 }
 
 function getCartProductQuantity() {
-    $quantities = array_column($_SESSION['cart'], 'quantity');
-    $total = array_sum($quantities);
+    $quantities = isset($_SESSION["cart"]) ? array_column($_SESSION['cart'], 'quantity') : 0;
+    $total = $quantities == 0 ? 0 : array_sum($quantities);
 
     if($total != 0 ) {
         return $total;
